@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "JohinsDev <johinsdev@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
   "dependencies": {
     "apollo-server-express": "^1.1.2",
     "body-parser": "^1.18.2",

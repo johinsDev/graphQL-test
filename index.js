@@ -1,10 +1,24 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+const express = require('express')
+const bodyParser = require('body-parser')
+const { graphqlExpress, graphiqlExpress } = require('apollo-server-express')
+const schema = require('./schema')
 
-const app = express();
+const app = express()
 
-const PORT = 5678;
+app.use(
+  '/graphql',
+  bodyParser.json(),
+  graphqlExpress({ schema })
+)
 
-app.listen(5678, () => {
-  console.log('Servidor corriendo');
-});
+app.use(
+  '/graphiql',
+  graphiqlExpress({
+    endpointURL: '/graphql'
+  })
+)
+
+const PORT = 5678
+app.listen(PORT, () => {
+  console.log('Servidor corriendo OK')
+})
